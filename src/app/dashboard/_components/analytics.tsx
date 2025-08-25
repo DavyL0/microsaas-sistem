@@ -27,7 +27,6 @@ export async function Stats() {
         icon={<Wallet className="w-8 h-8 text-green-500" />}
         value={0}
       />
-
     </div>
   );
 }
