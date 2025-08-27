@@ -22,27 +22,42 @@ model User {
   email         String          @unique
   emailVerified DateTime?
   image         String?
+  bio          String?
+  username     String?         @unique
+  
   accounts      Account[]
   sessions      Session[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
- 
+
+ Donation Donation[]@relation("UserDonations")
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  Donation Donation[]
+  
 }
-
 model Donation {
   id        String   @id @default(cuid())
-  amount    Float
+  amount    Int
+  donorName String
+  donorMensage String
+
   userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
+  user      User     @relation("UserDonations", fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  status PaymentStatus @default(PENDING)
 }
- 
+
+
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  }
+
 model Account {
   userId            String
   type              String
