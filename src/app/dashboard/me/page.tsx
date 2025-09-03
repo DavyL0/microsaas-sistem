@@ -8,6 +8,14 @@ export default async function Me() {
     if (!session?.user) {
       redirect("/");
     }
+
+    const userData = {
+      id: session.user.id,
+      name: session.user.name || null,
+      username: session.user?.username || null,
+      bio: session.user?.bio || null,
+      image: session.user?.image || null,
+    }
     
   return (
     <main className="w-full h-full flex gap-4 flex-col items-center p-4">
