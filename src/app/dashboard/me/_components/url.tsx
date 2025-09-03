@@ -10,7 +10,11 @@ export function UrlPreview() {
                 {process.env.NEXTAUTH_URL}/creator/
                 </p>
                 <input type="text" 
-                className="flex-1 outline-none border h-9 border-gray-300 bg-gray-50 text-black rounded-md"/>
+                className="flex-1 outline-none border h-9 border-gray-300 bg-gray-50 text-black rounded-md"
+                placeholder="Digite seu username..."
+                name="username"
+                />
+
             </div>
             <Button
             type="submit"
