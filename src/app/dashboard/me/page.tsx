@@ -5,7 +5,8 @@ import { UrlPreview } from "./_components/url";
 export default async function Me() {
 
   const session = await auth();
-    
+  
+     
     if (!session?.user) {
       redirect("/");
     }
